@@ -1,0 +1,78 @@
+<RelativeLayout
+    android:id="@+id/home_listview_item_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="3dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingTop="3dp">
+
+    <ImageView
+        android:id="@+id/home_listview_item_album"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="15dp"
+        android:src="@drawable/album_default"
+        />
+
+    <TextView
+        android:id="@+id/home_listview_item_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/home_listview_item_album"
+        android:layout_toRightOf="@id/home_listview_item_album"
+        android:layout_weight="1"
+        android:gravity="top|left"
+        android:padding="0dp"
+        android:singleLine="true"
+        android:textColor="#333333"
+        android:textSize="48px"/>
+
+
+    <TextView
+
+        android:id="@+id/home_listview_item_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/home_listview_item_title"
+        android:layout_marginTop="1dp"
+        android:layout_toRightOf="@id/home_listview_item_album"
+        android:ellipsize="end"
+        android:gravity="left"
+        android:lineSpacingExtra="1.2dp"
+        android:maxLines="2"
+        android:textColor="#999999"
+        android:textSize="36px"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/home_listview_item_album"
+        android:layout_toRightOf="@id/home_listview_item_album">
+
+        <TextView
+            android:id="@+id/home_listview_item_play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/item_play"
+            android:drawablePadding="5dp"
+            android:gravity="bottom"
+            android:textColor="#999999"
+            android:textSize="36px"/>
+
+        <TextView
+            android:id="@+id/home_listview_item_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/item_time"
+            android:drawablePadding="5dp"
+            android:textColor="#999999"
+            android:textSize="36px"/>
+    </LinearLayout>
+</RelativeLayout>
+
