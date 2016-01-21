@@ -18,6 +18,9 @@ import com.tingtingfm.lapp.a.utils.TransferUtils;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> {
     private WeakReference<Context> context;
     private List<VodBean> values;
@@ -34,7 +37,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         MyViewHolder holder = new MyViewHolder(LayoutInflater.from(
-                context.get()).inflate(R.layout.main_view_item, parent, false));
+                context.get()).inflate(R.layout.main_listview_item_layout, parent, false));
         return holder;
     }
 
@@ -64,19 +67,20 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
 
     class MyViewHolder extends RecyclerView.ViewHolder {
 
+        @Bind(R.id.home_listview_item_album)
         ImageView ivImage;
+        @Bind(R.id.home_listview_item_title)
         TextView tvTitle;
+        @Bind(R.id.home_listview_item_message)
         TextView tvIntro;
+        @Bind(R.id.home_listview_item_play)
         TextView tvPlayCount;
+        @Bind(R.id.home_listview_item_time)
         TextView tvUpdateTime;
 
         public MyViewHolder(View view) {
             super(view);
-            ivImage = (ImageView) view.findViewById(R.id.home_listview_item_album);
-            tvTitle = (TextView) view.findViewById(R.id.home_listview_item_title);
-            tvIntro = (TextView) view.findViewById(R.id.home_listview_item_message);
-            tvPlayCount = (TextView) view.findViewById(R.id.home_listview_item_play);
-            tvUpdateTime = (TextView) view.findViewById(R.id.home_listview_item_time);
+            ButterKnife.bind(this, view);
         }
     }
 }

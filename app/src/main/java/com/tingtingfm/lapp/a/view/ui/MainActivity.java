@@ -9,16 +9,21 @@ import android.widget.Toast;
 
 import com.tingtingfm.lapp.a.R;
 import com.tingtingfm.lapp.a.bean.VodBean;
-import com.tingtingfm.lapp.a.request.VodRequest;
 import com.tingtingfm.lapp.a.presenter.VodPresenter;
+import com.tingtingfm.lapp.a.request.VodRequest;
 import com.tingtingfm.lapp.a.view.IView.IVodView;
 import com.tingtingfm.lapp.a.view.adapter.HomeAdapter;
 
 import java.util.List;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener, IVodView {
-    private SwipeRefreshLayout swipeRefreshLayout;
-    private RecyclerView recyclerView;
+    @Bind(R.id.home_rv)
+    RecyclerView recyclerView;
+    @Bind(R.id.home_refresh)
+    SwipeRefreshLayout swipeRefreshLayout;
     private HomeAdapter mAdapter;
     private List<VodBean> values;
 
@@ -29,6 +34,8 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
+
         vodPresenter = new VodPresenter(this);
 
         initView();
@@ -37,9 +44,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     }
 
     private void initView() {
-        swipeRefreshLayout = (SwipeRefreshLayout) this.findViewById(R.id.home_refresh);
         swipeRefreshLayout.setOnRefreshListener(this);
-        recyclerView = (RecyclerView) this.findViewById(R.id.home_rv);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(mAdapter = new HomeAdapter(this, values));
     }
@@ -57,6 +62,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
     @Override
     public void setVodItems(List<VodBean> items) {
+        System.out.println("MainActivity.setVodItems");
         values = items;
         mAdapter.setData(values);
         mAdapter.notifyDataSetChanged();
